@@ -5,9 +5,13 @@ import Button from './Button'
 export default function Hero() {
   return (
     <section id="hero" className="relative min-h-[90vh] w-full overflow-hidden">
-      <div className="absolute inset-0">
+      {/* Background layer with safe dark fallback */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-[#0b1226] to-[#0a1a3b]">
+        {/* Spline sits on top of dark fallback. If it fails to load, the gradient ensures contrast. */}
         <Spline scene="https://prod.spline.design/cEecEwR6Ehj4iT8T/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
+
+      {/* Content */}
       <div className="relative z-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-16">
           <div className="max-w-3xl text-white">
@@ -21,7 +25,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
+
+      {/* Stronger gradient overlay to guarantee readability */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/70" />
     </section>
   )
 }
